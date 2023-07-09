@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# stack dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About stact-dashboard
 
-## Available Scripts
+stack-dashboard is a platform use to easily help users save and restore deleted contacts.
 
-In the project directory, you can run:
+## Technologies used
 
-### `npm start`
+- Reactjs
+- TypeScript
+- AntDesign
+- Styled-Component
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Clone the repository
 
-### `npm test`
+git clone [this repository](https://github.com/chimobi-justice/stack-dashboard.git)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Change directories into stack-dashboard
 
-### `npm run build`
+cd stack-dashboard
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Install [NPM](https://nodejs.org/en/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Finally, run your project in the browser!
 
-### `npm run eject`
+Start the application on development mode by running npm run start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## How To Contribute
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Kindly refer to the guide above to setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Issues
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Issues are always very welcome. Please be sure to create a constructive issue when necessary.
 
-## Learn More
+## Pull Requests
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Pull request are welcome if anything is missing or something is buggy. However, there are a couple of things you can do to make life easier for the maintainers.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Explain the issue that your PR is solving - or link to an existing issue
+- Follow the repository structure, and new sections in the corresponding folders
+- Ask questions to admin if unclear
