@@ -21,7 +21,7 @@ const Pages = () => {
                 path={path}
                 element={
                   <PrivateRoute>
-                    <Layout label="Good evening">
+                    <Layout>
                       <Component />
                     </Layout>
                   </PrivateRoute>
@@ -31,7 +31,7 @@ const Pages = () => {
                 path="*"
                 element={
                   <PrivateRoute>
-                    <Layout label="Good evening">
+                    <Layout>
                       <NotFound />
                     </Layout>
                   </PrivateRoute>

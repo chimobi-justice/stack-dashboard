@@ -1,8 +1,6 @@
 import { FunctionComponent } from "react";
 import { Link } from "react-router-dom";
 
-import DataTable from "react-data-table-component";
-
 import {
   ResponsiveContainer,
   AreaChart,
@@ -21,9 +19,6 @@ import {
   DashboardInfoContainer,
   DashboardInfoWrapper,
 } from "./styled.dashboard";
-
-import { ARCHIVE_COLUMNS, ARCHIVE_DATA } from "../../constants/archiveContact";
-import { CHART_DATA } from "../../constants/dashboardChart";
 
 const Dashboard: FunctionComponent = () => {
   return (
@@ -53,7 +48,7 @@ const Dashboard: FunctionComponent = () => {
       </DashboardCard>
       <DashboardInfoContainer>
         <DashboardInfoWrapper>
-          <ResponsiveContainer width="90%" height="90%">
+          <ResponsiveContainer width="100%" height="100%">
             <AreaChart
               width={500}
               height={400}
@@ -92,18 +87,6 @@ const Dashboard: FunctionComponent = () => {
               />
             </AreaChart>
           </ResponsiveContainer>
-        </DashboardInfoWrapper>
-
-        <DashboardInfoWrapper>
-          <div className="archive_box__wrapper">
-            <h1>Archive Contacts</h1>
-
-            <DataTable
-              data={ARCHIVE_DATA}
-              columns={ARCHIVE_COLUMNS}
-              pagination
-            />
-          </div>
         </DashboardInfoWrapper>
       </DashboardInfoContainer>
     </DashboardContainer>

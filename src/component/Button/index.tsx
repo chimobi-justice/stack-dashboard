@@ -50,3 +50,6 @@ const Button: FunctionComponent<IProp> = ({
 };
 
 export default Button;
+
+
+  // color: #007da3

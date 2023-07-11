@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AsideNavWrapper = styled.nav`
-  background: #020215;
+  background: linear-gradient(0deg, rgba(0,0,0.2), rgba(0,0,0.2), rgba(0,62,81));;
   position: fixed;
   top: 0;
   height: 100vh;

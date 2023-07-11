@@ -10,7 +10,7 @@ export const DashboardCard = styled.div`
   color: #fff;
 
   div {
-    background: #020215; 
+    background: rgb(0,94,122); 
     color: #fff;
     text-align: center;
     justify-content: center;
@@ -52,41 +52,12 @@ export const DashboardCard = styled.div`
 `;
 
 export const DashboardInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
   margin-top: 2rem; 
-  margin-bottom: 2rem; 
-  height: 70vh;
+  margin-bottom: 3rem; 
+  height: 60vh;
 `;
 
 export const DashboardInfoWrapper = styled.div`
-  width: 50%;
-
-  .archive_box__wrapper {
-    border: 1px solid #f1f1f1;
-    padding: 15px;
-    height: 430px;
-    overflow: hidden;
-    overflow-y: scroll;
-
-    h1 {
-      font-size: 20px;
-      font-weight: 100;
-      padding: 5px;
-    }
-  }
-
-  .archive_box__wrapper::-webkit-scrollbar {
-    width: 20px;
-  }
-
-  .archive_box__wrapper::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-  }
-
-  .archive_box__wrapper::-webkit-scrollbar-thumb {
-    background-color: #020215;
-    border-radius: 10px;
-  }
+  width: 100%;
+  height: 70vh;
 `;
