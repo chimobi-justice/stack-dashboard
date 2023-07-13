@@ -13,6 +13,8 @@ import {
 
 import { UserAddOutlined, UserDeleteOutlined } from "@ant-design/icons";
 
+import { CHART_DATA } from "../../constants/dashboardInfo";
+
 import {
   DashboardContainer,
   DashboardCard,
@@ -36,13 +38,6 @@ const Dashboard: FunctionComponent = () => {
           <p>30</p>
           <p>
             <UserDeleteOutlined />
-          </p>
-        </div>
-        <div>
-          <h5>Restore deleted contacts</h5>
-          <p>230</p>
-          <p className="restore_deleted__contact">
-            <Link to="#">Click here</Link>
           </p>
         </div>
       </DashboardCard>

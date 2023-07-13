@@ -16,8 +16,9 @@ export const DashboardCard = styled.div`
     justify-content: center;
     gap: 10;
     padding: 5px; 
+    margin: 0px 7px 0px 7px;
     border-radius: 5px;
-    width: 40%;
+    width: 50%;
     height: 120px;
 
     h5 {
@@ -31,23 +32,6 @@ export const DashboardCard = styled.div`
       font-weight: bold;
       padding: 3px;
     }
-
-    .restore_deleted__contact {
-      & a {
-        color: #fff;
-        text-decoration:  underline;
-        font-size: 15px;
-        font-weight: 100;
-
-        &:hover {
-          color: #f1f1f1;
-        }
-      }
-    }
-  }
-
-  & div:nth-child(even) {
-    margin: 0px 15px 0px 15px;
   }
 `;
 
