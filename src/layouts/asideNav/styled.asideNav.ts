@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AsideNavWrapper = styled.nav`
-  background: #020215;
+  background: rgba(0,55,72,1);
   position: fixed;
   top: 0;
   height: 100vh;

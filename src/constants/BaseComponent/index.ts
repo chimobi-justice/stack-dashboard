@@ -1,5 +1,4 @@
 import Dashboard from "../../pages/dashboard";
-import Overview from "../../pages/overview";
 import Report from "../../pages/report";
 import Contact from "../../pages/contact";
 import CreateContact from "../../pages/contact/create";
@@ -11,11 +10,6 @@ export const BaseComponent = [
   {
     Component: Dashboard,
     path: "/dashboard",
-    useAuth: true,
-  },
-  {
-    Component: Overview,
-    path: "/overview",
     useAuth: true,
   },
   {

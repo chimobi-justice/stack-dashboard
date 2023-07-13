@@ -1,5 +1,7 @@
 import { FunctionComponent, useState } from "react";
 
+import greeting from "../../helpers/greetings";
+
 import { NavWrapper } from "./styled.navbar";
 
 import {
@@ -9,7 +11,7 @@ import {
 } from "@ant-design/icons";
 import { Avatar } from "antd";
 
-const NavBar: FunctionComponent<{ label: string }> = ({ label }) => {
+const NavBar: FunctionComponent = () => {
   const [toggleProfile, setToggleProfile] = useState<boolean>(true);
 
   const toggleProfileClick = () => {
@@ -18,7 +20,7 @@ const NavBar: FunctionComponent<{ label: string }> = ({ label }) => {
 
   return (
     <NavWrapper>
-      <h2>{label}</h2>
+      <h2>{greeting()}</h2>
 
       <ul>
         <li onClick={toggleProfileClick}>

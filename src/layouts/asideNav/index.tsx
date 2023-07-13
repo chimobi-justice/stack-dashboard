@@ -22,11 +22,6 @@ const AsideNav: FunctionComponent = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/overview">
-              <CompassOutlined /> <span>Overview</span>
-            </NavLink>
-          </li>
-          <li>
             <NavLink to="/contacts">
               <ContactsOutlined /> <span>Contacts</span>
             </NavLink>
