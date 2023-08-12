@@ -1,12 +1,8 @@
-import { FunctionComponent } from 'react';
-import CreateLoginForm from './loginForm';
+import { FunctionComponent } from "react";
+import CreateLoginForm from "./loginForm";
 
 const Login: FunctionComponent = () => {
-	return (
-		<>
-      <CreateLoginForm />
-    </>
-	);
-}
+  return <CreateLoginForm />;
+};
 
 export default Login;

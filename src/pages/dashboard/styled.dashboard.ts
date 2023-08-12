@@ -10,12 +10,12 @@ export const DashboardCard = styled.div`
   color: #fff;
 
   div {
-    background: rgb(0,94,122); 
+    background: rgb(0, 94, 122);
     color: #fff;
     text-align: center;
     justify-content: center;
     gap: 10;
-    padding: 5px; 
+    padding: 5px;
     margin: 0px 7px 0px 7px;
     border-radius: 5px;
     width: 50%;
@@ -36,8 +36,8 @@ export const DashboardCard = styled.div`
 `;
 
 export const DashboardInfoContainer = styled.div`
-  margin-top: 2rem; 
-  margin-bottom: 3rem; 
+  margin-top: 2rem;
+  margin-bottom: 3rem;
   height: 60vh;
 `;
 

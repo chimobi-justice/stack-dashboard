@@ -3,6 +3,10 @@ import Report from "../../pages/report";
 import Contact from "../../pages/contact";
 import CreateContact from "../../pages/contact/create";
 
+// import Profile from "../../pages/user-profile/profile";
+// import Settings from "../../pages/user-profile/settings";
+import Profile from "../../pages/user-profile/profile";
+
 import Login from "../../pages/auths/login";
 import Register from "../../pages/auths/register";
 
@@ -37,4 +41,14 @@ export const BaseComponent = [
     path: "/register",
     useAuth: false,
   },
+  {
+    Component: Profile,
+    path: '/profile',
+    useAuth: true
+  },
+  // {
+  //   Component: Settings,
+  //   path: '/profile/settings',
+  //   useAuth: true
+  // },
 ];

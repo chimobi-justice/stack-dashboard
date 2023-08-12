@@ -15,8 +15,6 @@ const Contact: FunctionComponent = () => {
     navigate("/contacts/create");
   };
 
-
-
   return (
     <ContactWrapper>
       <ContactBtnContainer>

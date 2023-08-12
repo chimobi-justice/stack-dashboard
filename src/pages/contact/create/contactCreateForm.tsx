@@ -171,7 +171,6 @@ const ContactCreateForm: FunctionComponent = () => {
               type="primary" 
               htmlType="submit" 
               size="large" 
-              style={{width: '100%'}}
             >
               Create Contact
             </Button>

@@ -7,10 +7,10 @@ interface IProp {
   name: string;
   value: string | number;
   placeholder: string;
+  prefix: ReactElement;
   className?: string;
   onBlur?: (e: any) => void;
   onChange?: (e: any) => void;
-  prefix: ReactElement;
   iconRender?: any;
   style?: object;
 }

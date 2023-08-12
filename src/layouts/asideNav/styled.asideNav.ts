@@ -19,7 +19,7 @@ export const AsideNavWrapper = styled.nav`
   }
 
   .asideLinks {
-    margin-top: 5rem;
+    margin-top: 1rem;
     padding: 8px;
 
     li {

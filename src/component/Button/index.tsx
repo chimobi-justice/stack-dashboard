@@ -16,7 +16,6 @@ interface IProp {
   children: ReactNode;
   className?: string;
   size?: ButtonSize;
-  style?: object;
   shape?: ButtonShape;
   disabled?: boolean;
   onClick?: (e: any) => void;
@@ -28,7 +27,6 @@ const Button: FunctionComponent<IProp> = ({
   children,
   className,
   size,
-  style,
   shape,
   disabled,
   onClick,
@@ -39,7 +37,6 @@ const Button: FunctionComponent<IProp> = ({
       htmlType={htmlType}
       className={className}
       size={size}
-      style={style}
       shape={shape}
       disabled={disabled}
       onClick={onClick}
