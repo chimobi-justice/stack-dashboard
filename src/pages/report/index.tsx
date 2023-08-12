@@ -1,9 +1,7 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from "react";
 
 const Report: FunctionComponent = () => {
-  return (
-      <>report page</>
-  );  
-  }
-  
-  export default Report;
+  return <>report page</>;
+};
+
+export default Report;

@@ -1,11 +1,9 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent } from "react";
 
-import ContactCreateForm from './contactCreateForm';
+import ContactCreateForm from "./contactCreateForm";
 
 const CreateContact: FunctionComponent = () => {
-  return (
-    <ContactCreateForm />		
-  );
-}
+  return <ContactCreateForm />;
+};
 
 export default CreateContact;
