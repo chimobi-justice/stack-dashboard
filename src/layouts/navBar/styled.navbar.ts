@@ -7,7 +7,7 @@ export const NavWrapper = styled.nav`
   width: 80% !important;
   padding: 15px;
   border-bottom: 2px solid #f1f1f1;
-  background: #fff;
+  background: #f1f1f1;
 
   position: fixed;
   top: 0;

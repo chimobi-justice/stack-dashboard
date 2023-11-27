@@ -10,6 +10,8 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: #fff;
     color: #000;
+
+    overflow-x:  hidden;
   }
 
   body::-webkit-scrollbar {

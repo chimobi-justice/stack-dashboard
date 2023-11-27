@@ -20,7 +20,6 @@ export const AsideNavWrapper = styled.nav`
 
   .asideLinks {
     margin-top: 1rem;
-    padding: 8px;
 
     li {
       margin: 7px 0px 7px;
@@ -29,7 +28,7 @@ export const AsideNavWrapper = styled.nav`
       a {
         display: block;
         align-items: center;
-        justify-centent: center;
+        justify-content: center;
         color: #fff;
         text-decoration: none;
         padding: 15px;

@@ -6,5 +6,6 @@ export const LayoutContainer = styled.div`
   .main {
     margin-left: 20%;
     width: 80%;
+    height: 100vh;
   }
 `;

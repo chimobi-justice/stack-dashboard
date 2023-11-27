@@ -44,4 +44,30 @@ export const DashboardInfoContainer = styled.div`
 export const DashboardInfoWrapper = styled.div`
   width: 100%;
   height: 70vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  gap: 15px;
+
+  div {
+    border-radius: 9px;
+    background: #f1f1f1;
+  }
+
+  .info__wrapper_left {
+    width: 70%;
+  }
+
+  .info__wrapper_right {
+    width: 30%;
+
+    .text_info {
+      margin-top: 10px;
+
+      h4 {
+        color: #0009;
+        font-size: 16px;
+      }
+    }
+  }
 `;
