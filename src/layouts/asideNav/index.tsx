@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { AsideNavWrapper } from "./styled.asideNav";
 
 import {
-  CompassOutlined,
+  // CompassOutlined,
   ContactsOutlined,
   UnorderedListOutlined,
   SnippetsOutlined,
