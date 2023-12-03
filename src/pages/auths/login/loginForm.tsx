@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { FunctionComponent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -7,10 +7,12 @@ import * as Yup from "yup";
 import Input from "../../../component/Input"; 
 import Button from "../../../component/Button";
 
+import { Spin } from 'antd';
 import {
   UserOutlined,
   EyeTwoTone,
   EyeInvisibleOutlined,
+  LoadingOutlined
 } from "@ant-design/icons";
 
 import {
@@ -20,10 +22,46 @@ import {
   LoginError,
 } from "./styled.login";
 
+
+import { auth } from "../../../firebase";
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 const CreateLoginForm: FunctionComponent = () => {
-  const _handleSignup = () => {
-    console.log("logging in...");
+  const [ emailErr, setEmailErr] = useState<string>('');
+  const [ isLoading, setIsloading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const _handleSignup = async (values: any) => {
+    const payload = {
+      email: values.email,
+      password: values.password,
+    }
+    
+  try {
+      setIsloading(true)
+      const userCredential = await signInWithEmailAndPassword(auth, payload.email, payload.password);
+      const user = userCredential.user;
+  
+      if (user) {
+        navigate('/dashboard');
+      }
+
+      setIsloading(false);
+      
+    } catch (error: any) {
+      if (error.code === 'auth/invalid-credential') {
+        setEmailErr(' Invalid Email Address or Password');
+        setIsloading(false)
+      }
+      if (error.code === 'auth/too-many-requests') {
+        setEmailErr("Too many attempts you can try again later");
+        setIsloading(false)
+      }
+    }
   };
+
 
   const validateSchema = Yup.object({
     email: Yup.string().required("Required"),
@@ -64,6 +102,8 @@ const CreateLoginForm: FunctionComponent = () => {
               />
             </label>
             {errors.email && <LoginError>{errors.email}</LoginError>}
+
+            {emailErr && <LoginError>{emailErr}</LoginError>}
           </div>
 
           <div>
@@ -87,8 +127,8 @@ const CreateLoginForm: FunctionComponent = () => {
           </div>
 
           <div>
-            <Button type="primary" htmlType="submit">
-              Login
+            <Button type="primary" htmlType="submit" disabled={isLoading} size="large">
+              {isLoading ? <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} /> : 'Login'}
             </Button>
             <p>
               Don't have an account <Link to="/register">Sign up</Link>

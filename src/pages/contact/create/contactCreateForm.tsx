@@ -2,14 +2,16 @@ import { FunctionComponent } from 'react';
 
 // import PhoneInput from 'react-phone-number-input';
 
+import { addContact } from '../../../services/contact';
+
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
-import { 
-	CreateContactContainer, 
-	CreateContactForm, 
-	CreateContactFormWrapper, 
-	CreateContactError 
+import {
+  CreateContactContainer,
+  CreateContactForm,
+  CreateContactFormWrapper,
+  CreateContactError,
 } from './styled.createContact';
 
 import Input from '../../../component/Input';
@@ -21,48 +23,56 @@ import { UserOutlined } from '@ant-design/icons';
 type NotificationType = 'success' | 'warning' | 'error' | 'info';
 
 enum NotificationMessage {
-	success = "Contact created successfully",
-	warning = "Something went wrong",
-	error = "error while creating your contact",
-	info = "Please try reload your page"
-} 
+  success = 'Contact created successfully',
+  warning = 'Something went wrong',
+  error = 'error while creating your contact',
+  info = 'Please try reload your page',
+}
 
 const ContactCreateForm: FunctionComponent = () => {
   const [api, contextholder] = notification.useNotification();
 
-	const promptNotificationBox = (type: NotificationType) => {
-		api[type]({
-			message: NotificationMessage[type],
-			description: "stack help you save your contact for future used"
-		});
-	}
+  const promptNotificationBox = (type: NotificationType) => {
+    api[type]({
+      message: NotificationMessage[type],
+      // description: 'stack help you save your contact for future used',
+    });
+  };
 
-	const _handleCreateContact = () => {
-		promptNotificationBox('success');
-	}
+  const _handleCreateContact = (values: any) => {
+    addContact({
+       name: values.name,
+       email: values.email,
+       phone: values.phone,
+       address: values.address,
+       city: values.city,
 
-	const validateSchema = Yup.object({
-		name: Yup.string().required("Required"),
-		email: Yup.string().email("Invalid Email address"),
-		phone: Yup.number().required("Required"),
-		city: Yup.string()
-	});
+    });
+    promptNotificationBox('success');
+  };
 
-	const formik = useFormik({
-		initialValues: {
-			name: "",
-			company: "",
-			email: "",
-			phone: "",
-			address: "",
-			city: ""
-		},
-		onSubmit: _handleCreateContact,
-		validationSchema: validateSchema
-	});
+  const validateSchema = Yup.object({
+    name: Yup.string().required('Required'),
+    email: Yup.string().email('Invalid Email address'),
+    phone: Yup.number().required('Required'),
+    city: Yup.string(),
+  });
 
-	const { handleSubmit, handleBlur, handleChange, errors, values } = formik;
-  
+  const formik = useFormik({
+    initialValues: {
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      address: '',
+      city: '',
+    },
+    onSubmit: _handleCreateContact,
+    validationSchema: validateSchema,
+  });
+
+  const { handleSubmit, handleBlur, handleChange, errors, values } = formik;
+
   return (
     <>
       {/* contextholder shows the notification box */}
@@ -71,10 +81,10 @@ const ContactCreateForm: FunctionComponent = () => {
       <CreateContactContainer>
         <CreateContactForm onSubmit={handleSubmit}>
           <h1>Create Contact</h1>
-          
+
           <CreateContactFormWrapper>
             <div>
-              <Input 
+              <Input
                 type="text"
                 placeholder="Enter name"
                 name="name"
@@ -82,7 +92,7 @@ const ContactCreateForm: FunctionComponent = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 prefix={<UserOutlined />}
-                style={{ padding: "10px" }}
+                style={{ padding: '10px' }}
               />
               {errors.name && (
                 <CreateContactError>{errors.name}</CreateContactError>
@@ -90,7 +100,7 @@ const ContactCreateForm: FunctionComponent = () => {
             </div>
 
             <div>
-              <Input 
+              <Input
                 type="text"
                 placeholder="Phone"
                 name="phone"
@@ -98,7 +108,7 @@ const ContactCreateForm: FunctionComponent = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 prefix={<UserOutlined />}
-                style={{ padding: "10px" }}
+                style={{ padding: '10px' }}
               />
 
               {/* <PhoneInput 
@@ -111,7 +121,7 @@ const ContactCreateForm: FunctionComponent = () => {
             </div>
 
             <div>
-              <Input 
+              <Input
                 type="text"
                 placeholder="Email (optional)"
                 name="email"
@@ -119,15 +129,15 @@ const ContactCreateForm: FunctionComponent = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 prefix={<UserOutlined />}
-                style={{ padding: "10px" }}
+                style={{ padding: '10px' }}
               />
-              {errors.email && ( 
+              {errors.email && (
                 <CreateContactError>{errors.email}</CreateContactError>
               )}
-            </div>  
+            </div>
 
             <div>
-              <Input 
+              <Input
                 type="text"
                 placeholder="Company (optional)"
                 name="company"
@@ -135,12 +145,12 @@ const ContactCreateForm: FunctionComponent = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 prefix={<UserOutlined />}
-                style={{ padding: "10px" }}
+                style={{ padding: '10px' }}
               />
             </div>
 
             <div>
-              <Input 
+              <Input
                 type="text"
                 placeholder="Address (optional)"
                 name="address"
@@ -148,12 +158,12 @@ const ContactCreateForm: FunctionComponent = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 prefix={<UserOutlined />}
-                style={{ padding: "10px" }}
+                style={{ padding: '10px' }}
               />
             </div>
 
             <div>
-              <Input 
+              <Input
                 type="text"
                 placeholder="City (optional)"
                 name="city"
@@ -161,17 +171,13 @@ const ContactCreateForm: FunctionComponent = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 prefix={<UserOutlined />}
-                style={{ padding: "10px" }}
+                style={{ padding: '10px' }}
               />
             </div>
           </CreateContactFormWrapper>
 
           <div>
-            <Button 
-              type="primary" 
-              htmlType="submit" 
-              size="large" 
-            >
+            <Button type="primary" htmlType="submit" size="large">
               Create Contact
             </Button>
           </div>
@@ -179,6 +185,6 @@ const ContactCreateForm: FunctionComponent = () => {
       </CreateContactContainer>
     </>
   );
-}
+};
 
 export default ContactCreateForm;
