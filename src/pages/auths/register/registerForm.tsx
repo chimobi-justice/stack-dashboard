@@ -1,5 +1,6 @@
-import { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
+import { FunctionComponent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -8,10 +9,12 @@ import Input from "../../../component/Input";
 
 import Button from "../../../component/Button";
 
+import { Spin } from 'antd';
 import {
   UserOutlined,
   EyeTwoTone,
   EyeInvisibleOutlined,
+  LoadingOutlined
 } from "@ant-design/icons";
 
 import {
@@ -21,9 +24,53 @@ import {
   RegisterError,
 } from "./styled.register";
 
+import { auth, db } from "../../../firebase";
+import { addDoc, collection } from 'firebase/firestore';
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+ 
+
 const CreateRegisterForm: FunctionComponent = () => {
-  const _handleSignup = () => {
-    alert("click");
+  const [ emailErr, setEmailErr] = useState<string>('');
+  const [ isLoading, setIsloading] = useState<boolean>(false);
+
+  const navigate = useNavigate();
+
+  const _handleSignup = async (values: any) => {
+    const payload = {
+      email: values.email,
+      password: values.password,
+      fullname: values.fullname,
+    }
+    
+  try {
+      setIsloading(true)
+      const userCredential = await createUserWithEmailAndPassword(auth, payload.email, payload.password);
+      const user = userCredential?.user;
+  
+      if (user) {
+        const userData = {
+          uid: user.uid,
+          email: user.email,
+          displayName: payload.fullname,
+        };
+  
+        await addDoc(collection(db, "users"), {
+          userData
+        });
+
+        navigate('/dashboard');
+      }
+
+      setIsloading(false);
+
+    } catch (error: any) {
+      if (error.code === 'auth/email-already-in-use') {
+        setEmailErr('Email Address already exit')
+        setIsloading(false)
+      }
+    }
+  
   };
 
   const validateSchema = Yup.object({
@@ -40,7 +87,6 @@ const CreateRegisterForm: FunctionComponent = () => {
       fullname: "",
       email: "",
       password: "",
-      confirm_password: ""
     },
     onSubmit: _handleSignup,
     validationSchema: validateSchema,
@@ -88,6 +134,8 @@ const CreateRegisterForm: FunctionComponent = () => {
               />
             </label>
             {errors.email && <RegisterError>{errors.email}</RegisterError>}
+
+            {emailErr && <RegisterError>{emailErr}</RegisterError>}
           </div>
 
           <div>
@@ -113,25 +161,8 @@ const CreateRegisterForm: FunctionComponent = () => {
           </div>
 
           <div>
-            <label>
-              Confirm password
-              <Input
-                type="password"
-                placeholder="Repeat your password"
-                name="confirm_password"
-                value={values.confirm_password}
-                prefix={<UserOutlined />}
-                iconRender={(visible: any) =>
-                  visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
-                }
-                style={{ padding: "10px" }}
-              />
-            </label>
-          </div>
-
-          <div>
-            <Button type="primary" htmlType="submit">
-              Register
+            <Button type="primary" htmlType="submit" disabled={isLoading} size="large">
+              {isLoading ? <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} /> : 'Register'}
             </Button>
             <p>
               Already have an account <Link to="/">Sign in</Link>

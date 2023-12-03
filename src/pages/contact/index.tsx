@@ -1,14 +1,29 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { getAllContacts } from '../../services/contact';
 
 import { Button } from "antd";
 
 import DataTable from "react-data-table-component";
 
 import { ContactWrapper, ContactBtnContainer } from "./styled.contact";
-import { CONTACT_COLUMNS, CONTACT_DATA } from "../../constants/contact";
+import { CONTACT_COLUMNS } from "../../constants/contact";
 
 const Contact: FunctionComponent = () => {
+  const [contacts, setContacts] = useState<any>([]);
+
+  const fetchContacts = async () => {
+    const res = await getAllContacts();
+
+    setContacts(res);
+  }
+
+  useEffect(() => {
+    fetchContacts();
+  }, [])
+
+  
   const navigate = useNavigate();
 
   const getCreateContact = () => {
@@ -23,7 +38,7 @@ const Contact: FunctionComponent = () => {
       <DataTable
         title="Contacts"
         columns={CONTACT_COLUMNS}
-        data={CONTACT_DATA}
+        data={contacts}
         pagination
       />
     </ContactWrapper>
